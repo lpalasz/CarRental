@@ -35,6 +35,7 @@ public class CarService {
         entityManager.getTransaction().begin();
         entityManager.persist(car);
         entityManager.getTransaction().commit();
+        entityManager.close();
 
     }
 
@@ -46,6 +47,7 @@ public class CarService {
         Car car = entityManager.find(Car.class, carId);
         entityManager.remove(car);
         entityManager.getTransaction().commit();
+        entityManager.close();
 
     }
 
@@ -65,6 +67,7 @@ public class CarService {
         }
         entityManager.merge(car);
         entityManager.getTransaction().commit();
+        entityManager.close();
 
 
     }
