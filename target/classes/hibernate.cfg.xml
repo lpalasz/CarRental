@@ -16,7 +16,7 @@
         <property name="hibernate.connection.autocommit">true</property>
         <property name="hibernate.hbm2ddl.auto">create</property>
         <property name="hibernate.show_sql">true</property>
-        <mapping class ="com.company.Car"/>
+        <mapping class ="com.company.Cars"/>
 
 
     </session-factory>
