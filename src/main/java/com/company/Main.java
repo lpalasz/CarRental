@@ -1,9 +1,18 @@
 package com.company;
 
+import org.hibernate.Session;
+
 public class Main {
 
     public static void main(String[] args) {
-	//test 123
-        System.out.println("test");
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        String result = session.createNativeQuery("SELECT version();").getSingleResult().toString();
+        System.out.println(result);
+
+        session.close();
+
+        HibernateUtil.shutdown();
     }
 }
