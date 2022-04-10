@@ -1,9 +1,7 @@
 package com.company;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
-import javax.persistence.EntityManager;
 
 public class Main {
 
@@ -13,7 +11,6 @@ public class Main {
         System.out.println(result);
         session.close();
         HibernateUtil.shutdown();
-
 
     }
 }
