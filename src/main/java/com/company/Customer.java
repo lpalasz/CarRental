@@ -1,6 +1,7 @@
 package com.company;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "customers")
@@ -19,4 +20,50 @@ public class Customer {
     @OneToOne(mappedBy = "customer",fetch = FetchType.EAGER)
     private Rental rental;
 
+    public Customer() {}
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Rental getRental() {
+        return rental;
+    }
+
+    public void setRental(Rental rental) {
+        this.rental = rental;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return Objects.equals(id, customer.id) && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(rental, customer.rental);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, rental);
+    }
 }

@@ -8,7 +8,7 @@
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/carrental?useSSL=false&amp;serverTimezone=CET</property>
         <property name="connection.username">root</property>
-        <property name="connection.password">password</property>
+        <property name="connection.password">Hefajstos109</property>
         <property name="connection.pool_size">1</property>
         <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
         <property name="current_session_context_class">thread</property>
