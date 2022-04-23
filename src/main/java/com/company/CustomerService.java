@@ -10,24 +10,24 @@ public class CustomerService {
 
     public void addCustomer(){
         EntityManager entityManager = sessionFactory.createEntityManager();
-        entityManager.getTransaction().begin();
         Scanner scanner = new Scanner(System.in);
         Customer customer = new Customer();
-        System.out.println("Enter your First Name");
+        System.out.print("Enter your First Name: ");
         customer.setFirstName(scanner.nextLine());
-        System.out.println("Enter your Last Name");
+        System.out.print("Enter your Last Name: ");
         customer.setLastName(scanner.nextLine());
+        entityManager.getTransaction().begin();
         entityManager.persist(customer);
         entityManager.getTransaction().commit();
         entityManager.close();
     }
     public void deleteCustomer() {
         EntityManager entityManager = sessionFactory.createEntityManager();
-        entityManager.getTransaction().begin();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter Customer Id you want to delete");
+        System.out.print("Enter Customer Id you want to delete: ");
         int customerId = scanner.nextInt();
         Customer customer = entityManager.find(Customer.class, customerId);
+        entityManager.getTransaction().begin();
         entityManager.remove(customer);
         entityManager.getTransaction().commit();
         entityManager.close();

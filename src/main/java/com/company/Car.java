@@ -4,8 +4,10 @@ package com.company;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
+@Table(name = "cars")
 public class Car {
 
     @Id
@@ -13,27 +15,27 @@ public class Car {
     @Column
     private Integer id;
 
-    @Column(name="brand")
+    @Column(name = "brand")
     private String brand;
 
-    @Column(name="model")
+    @Column(name = "model")
     private String model;
 
-    @Column(name="color")
+    @Column(name = "color")
     private String color;
 
-    @Column(name="license_plate")
+    @Column(name = "license_plate")
     private String licensePlate;
 
-    @Column(name="car_condition")
+    @Column(name = "car_condition")
     @Enumerated(EnumType.STRING)
     private carCondition carCondition;
 
     @Column(name = "rental_cost")
     private BigDecimal rentalCost;
 
-    @OneToOne(mappedBy = "car",fetch = FetchType.EAGER)
-    private Rental rental;
+    @OneToMany(mappedBy = "car", fetch = FetchType.EAGER)
+    private Set<Rental> rentals;
 
     public Car() {
     }
@@ -94,24 +96,11 @@ public class Car {
         this.rentalCost = rentalCost;
     }
 
-    public Rental getRental() {
-        return rental;
+    public Set<Rental> getRentals() {
+        return rentals;
     }
 
-    public void setRental(Rental rental) {
-        this.rental = rental;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return Objects.equals(id, car.id) && Objects.equals(brand, car.brand) && Objects.equals(model, car.model) && Objects.equals(color, car.color) && Objects.equals(licensePlate, car.licensePlate) && carCondition == car.carCondition && Objects.equals(rentalCost, car.rentalCost) && Objects.equals(rental, car.rental);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, brand, model, color, licensePlate, carCondition, rentalCost, rental);
+    public void setRentals(Set<Rental> rentals) {
+        this.rentals = rentals;
     }
 }
