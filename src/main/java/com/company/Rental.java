@@ -2,6 +2,7 @@ package com.company;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -15,10 +16,10 @@ public class Rental {
     private Integer id;
 
     @Column(name = "from_date")
-    private Date fromDate;
+    private LocalDate fromDate;
 
     @Column(name = "to_date")
-    private Date toDate;
+    private LocalDate toDate;
 
     @Column(name = "is_damage")
     private boolean isDamage;
@@ -26,11 +27,11 @@ public class Rental {
     @Column(name = "fine_cost")
     private BigDecimal fineCost;
 
-   @OneToOne(fetch = FetchType.EAGER)
+   @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "car_id")
     private Car car;
 
@@ -44,19 +45,19 @@ public class Rental {
         this.id = id;
     }
 
-    public Date getFromDate() {
+    public LocalDate getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(Date fromDate) {
+    public void setFromDate(LocalDate fromDate) {
         this.fromDate = fromDate;
     }
 
-    public Date getToDate() {
+    public LocalDate getToDate() {
         return toDate;
     }
 
-    public void setToDate(Date toDate) {
+    public void setToDate(LocalDate toDate) {
         this.toDate = toDate;
     }
 
@@ -91,19 +92,5 @@ public class Rental {
     public void setCar(Car car) {
         this.car = car;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Rental rental = (Rental) o;
-        return isDamage == rental.isDamage && Objects.equals(id, rental.id) && Objects.equals(fromDate, rental.fromDate) && Objects.equals(toDate, rental.toDate) && Objects.equals(fineCost, rental.fineCost) && Objects.equals(customer, rental.customer) && Objects.equals(car, rental.car);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, fromDate, toDate, isDamage, fineCost, customer, car);
-    }
-
 
 }

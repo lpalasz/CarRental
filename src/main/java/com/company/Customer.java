@@ -17,10 +17,11 @@ public class Customer {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToOne(mappedBy = "customer",fetch = FetchType.EAGER)
-    private Rental rental;
+//    @OneToOne(mappedBy = "customer",fetch = FetchType.EAGER)
+//    private Rental rental;
 
-    public Customer() {}
+    public Customer() {
+    }
 
     public Integer getId() {
         return id;
@@ -46,25 +47,13 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public Rental getRental() {
-        return rental;
-    }
+//    public Rental getRental() {
+//        return rental;
+//    }
+//
+//    public void setRental(Rental rental) {
+//        this.rental = rental;
+//    }
 
-    public void setRental(Rental rental) {
-        this.rental = rental;
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Customer customer = (Customer) o;
-        return Objects.equals(id, customer.id) && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(rental, customer.rental);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, firstName, lastName, rental);
-    }
-
-    }
+}

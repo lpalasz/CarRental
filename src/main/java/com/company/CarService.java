@@ -8,10 +8,11 @@ import java.util.Scanner;
 public class CarService {
 
     private static final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-    private static final EntityManager entityManager = sessionFactory.createEntityManager();
+//    private static final EntityManager entityManager = sessionFactory.createEntityManager();
 
 
     public void addCar() {
+        EntityManager entityManager = sessionFactory.createEntityManager();
         Scanner scanner = new Scanner(System.in);
         Car car = new Car();
         System.out.print("Insert brand: ");
@@ -40,6 +41,7 @@ public class CarService {
     }
 
     public void removeCar() {
+        EntityManager entityManager = sessionFactory.createEntityManager();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Insert car id that you wish to remove: ");
         int carId = scanner.nextInt();
@@ -52,6 +54,7 @@ public class CarService {
     }
 
     public void changeCarCondition() {
+        EntityManager entityManager = sessionFactory.createEntityManager();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Insert car id that needs condition update: ");
         int carId = scanner.nextInt();
