@@ -104,4 +104,6 @@ public class Rental {
     public int hashCode() {
         return Objects.hash(id, fromDate, toDate, isDamage, fineCost, customer, car);
     }
+
+
 }

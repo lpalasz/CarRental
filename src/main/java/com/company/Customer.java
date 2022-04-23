@@ -66,4 +66,5 @@ public class Customer {
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, rental);
     }
-}
+
+    }
